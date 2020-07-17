@@ -9,6 +9,13 @@ const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeRange = document.getElementById("jsVolume");
 
+const registerView = () => {
+  const videoId = window.location.href.split("/videos/")[1];
+  fetch(`/api/${videoId}/view`, {
+    method: "POST",
+  });
+};
+
 function handlePlayClick() {
   if (videoPlayer.paused) {
     videoPlayer.play();
@@ -60,7 +67,7 @@ function goFullScreen() {
   fullScrnBtn.addEventListener("click", exitFullScreen);
 }
 
-const formatDate = (seconds) => {
+const formatDate = seconds => {
   const secondsNumber = parseInt(seconds, 10);
   let hours = Math.floor(secondsNumber / 3600);
   let minutes = Math.floor((secondsNumber - hours * 3600) / 60);
@@ -82,20 +89,28 @@ function getCurrentTime() {
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 }
 
-function setTotalTime() {
-  const totalTimeString = formatDate(videoPlayer.duration);
+async function setTotalTime() {
+  let duration;
+  if (!isFinite(videoPlayer.duration)) {
+    const blob = await fetch(videoPlayer.src).then(response => response.blob());
+    duration = await getBlobDuration(blob);
+  } else {
+    duration = videoPlayer.duration;
+  }
+  const totalTimeString = formatDate(duration);
   totalTime.innerHTML = totalTimeString;
   setInterval(getCurrentTime, 1000);
 }
 
 function handleEnded() {
+  registerView();
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
 }
 
 function handleDrag(event) {
   const {
-    target: { value },
+    target: { value }
   } = event;
   videoPlayer.volume = value;
   if (value >= 0.6) {
