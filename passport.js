@@ -24,9 +24,7 @@ passport.use(
     {
       clientID: process.env.FB_ID,
       clientSecret: process.env.FB_SECRET,
-      callbackURL: `https://polar-sea-27980.herokuapp.com${
-        routes.facebookCallback
-      }`,
+      callbackURL: `https://afraid-baboon-46.localtunnel.me${routes.facebookCallback}`,
       profileFields: ["id", "displayName", "photos", "email"],
       scope: ["public_profile", "email"],
     },
