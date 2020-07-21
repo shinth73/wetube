@@ -22,9 +22,11 @@
   .social-login--github {
     background-color: $black;
     color: white;
+    text-decoration: none;
   }
-  .social-login--facebook {
-    background-color: #3a5998;
-    color: white;
+  .social-login--kakao {
+    // background-color: #3a5998;
+    background-color: #ffe500;
+    text-decoration: none;
   }
 }
