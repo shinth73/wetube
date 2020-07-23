@@ -21,9 +21,7 @@ passport.use(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: PRODUCTION
-        ? `https://arcane-retreat-12139.herokuapp.com/${routes.githubCallback}`
-        : `http://localhost:4000${routes.githubCallback}`,
+      callbackURL: `https://arcane-retreat-12139.herokuapp.com/${routes.githubCallback}`,
     },
     githubLoginCallback
   )
