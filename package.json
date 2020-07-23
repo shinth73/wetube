@@ -9,6 +9,8 @@
     "@babel/core": "^7.10.5",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
+    "@babel/node": "^7.10.5",
+    "babel-loader": "^8.1.0",
     "autoprefixer": "^9.8.4",
     "aws-sdk": "^2.718.0",
     "axios": "^0.19.2",
@@ -61,8 +63,6 @@
   },
   "homepage": "https://github.com/shinth73/wetube#readme",
   "devDependencies": {
-    "@babel/node": "^7.10.5",
-    "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.4.0",
     "nodemon": "^2.0.4"
