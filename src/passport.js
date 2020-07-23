@@ -5,6 +5,9 @@ import GithubStrategy from "passport-github";
 import FacebookStrategy from "passport-facebook";
 import KakaoStrategy from "passport-kakao";
 import User from "./models/User";
+import dotenv from "dotenv";
+dotenv.config();
+
 import {
   githubLoginCallback,
   facebookLoginCallback,
